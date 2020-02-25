@@ -1,0 +1,7 @@
+- pengguna: admin, user, operator.
+- masing-masing pengguna memiliki struktur tabel sendiri
+- nama database: proj_absen_pegawai_dosen
+- untuk menghilangkan uri_segment bawaan "index.php" diperlukan .htaccess
+- data pegawai tidak bisa diisi dengan text karena struktur tabelnya. fixed.
+1. membuat halaman admin dan tabel admin
+	- membuat struktur tabel admin
