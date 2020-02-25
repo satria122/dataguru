@@ -42,6 +42,7 @@
           <th>No Telp</th>
           <th>Alamat</th>
           <th>Asal Sekolah</th>
+          <th>Tgl Pensiun</th>
           <th style="text-align: center;">Aksi</th>
         </tr>
       </thead>

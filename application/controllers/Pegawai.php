@@ -49,6 +49,7 @@ class Pegawai extends AUTH_Controller {
 		$this->form_validation->set_rules('agama', 'Agama', 'trim|required');
 		$this->form_validation->set_rules('golongan', 'Golongan', 'trim|required');
 		// $this->form_validation->set_rules('ttl', 'TTL', 'trim|required');
+		$this->form_validation->set_rules('tgl_pensiun', 'Tgl Pensiun', 'trim|required');
 		$nip = $this->input->post('nip');
 		$nama = $this->input->post('nama');
 		$kota=$this->input->post('kota');
@@ -61,6 +62,7 @@ class Pegawai extends AUTH_Controller {
 		$golongan= $this->input->post('golongan');
 		$ttl1 = $this->input->post('ttl1',true);
 		$ttl2 = $this->input->post('ttl2',true);
+		$tgl_pensiun= $this->input->post('tgl_pensiun');
 		$data = array(
 		'nip'=>$nip,
 		'nama'=>$nama,
@@ -72,7 +74,8 @@ class Pegawai extends AUTH_Controller {
 		'sekolah'=>$sekolah,
 		'agama'=>$agama,
 		'golongan'=>$golongan,
-		'ttl'=>$ttl1.' '.$ttl2
+		'ttl'=>$ttl1.' '.$ttl2,
+		'tgl_pensiun'=>$tgl_pensiun
 		);
 		if ($this->form_validation->run() == TRUE) {
 			$result = $this->M_pegawai->insert($data, 'pegawai');
@@ -113,6 +116,7 @@ class Pegawai extends AUTH_Controller {
 		$this->form_validation->set_rules('agama', 'Agama', 'trim|required');
 		$this->form_validation->set_rules('golongan', 'Golongan', 'trim|required');
 		// $this->form_validation->set_rules('ttl', 'TTL', 'trim|required');
+		$this->form_validation->set_rules('tgl_pensiun', 'Tgl Pensiun', 'trim|required');
 		$id = $this->input->post('id');
 		$nip = $this->input->post('nip');
 		$nama = $this->input->post('nama');
@@ -126,6 +130,7 @@ class Pegawai extends AUTH_Controller {
 		$golongan= $this->input->post('golongan');
 		$ttl1 = $this->input->post('ttl1',true);
 		$ttl2 = $this->input->post('ttl2',true);
+		$tgl_pensiun= $this->input->post('tgl_pensiun');
 		$data = array(
 		'nip'=>$nip,
 		'nama'=>$nama,
@@ -137,7 +142,8 @@ class Pegawai extends AUTH_Controller {
 		'sekolah'=>$sekolah,
 		'agama'=>$agama,
 		'golongan'=>$golongan,
-		'ttl'=>$ttl1.' '.$ttl2
+		'ttl'=>$ttl1.' '.$ttl2,
+		'tgl_pensiun'=>$tgl_pensiun
 		);
 		$where = array('id' => $id);
 		$table = 'pegawai';
@@ -193,7 +199,7 @@ class Pegawai extends AUTH_Controller {
 		$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount, "No Telepon");
 		$objPHPExcel->getActiveSheet()->SetCellValue('J'.$rowCount, "Alamat");
 		$objPHPExcel->getActiveSheet()->SetCellValue('K'.$rowCount, "Asal Sekolah");
-		
+		$objPHPExcel->getActiveSheet()->SetCellValue('L'.$rowCount, "Tgl Pensiun");
 		
 		$rowCount++;
 
@@ -209,6 +215,7 @@ class Pegawai extends AUTH_Controller {
 		    $objPHPExcel->getActiveSheet()->setCellValueExplicit('I'.$rowCount, $value->telp, PHPExcel_Cell_DataType::TYPE_STRING);
 		    $objPHPExcel->getActiveSheet()->SetCellValue('J'.$rowCount, $value->alamat);
 		    $objPHPExcel->getActiveSheet()->SetCellValue('K'.$rowCount, $value->sekolah);
+		    $objPHPExcel->getActiveSheet()->SetCellValue('L'.$rowCount, $value->tgl_pensiun);
 		    $rowCount++; 
 		} 
 
