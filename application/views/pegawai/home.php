@@ -35,8 +35,9 @@
           <th>TTL</th>
           <th>Jabatan</th>
           <th>Golongan</th>
-          
           <th>Status</th>
+          <th>Status Pensiun</th>
+          <th>Tgl Pensiun</th>
           <th>Jenis Kelamin</th>
           <th>Agama</th>
           <th>No Telp</th>

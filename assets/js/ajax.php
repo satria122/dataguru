@@ -14,6 +14,8 @@
 		tampilKota();
 		tampilDevice();
 		tampilSidik();
+		tampilpensiun();
+		tampilhampirpensiun()
 		<?php
 			if ($this->session->flashdata('msg') != '') {
 				echo "effect_msg();";
@@ -526,4 +528,21 @@ function tampilInputSidik() {
 	$('#update-jabatan').on('hidden.bs.modal', function () {
 	  $('.form-msg').html('');
 	})
+
+	//=======================================================================================
+	function tampilpensiun() {
+		$.get('<?php echo base_url('Pegawai/tampilpensiun'); ?>', function(data) {
+			MyTable.fnDestroy();
+			$('#data-pensiun').html(data);
+			refresh();
+		});
+	}
+	function tampilhampirpensiun() {
+		$.get('<?php echo base_url('Pegawai/tampilhampirpensiun'); ?>', function(data) {
+			MyTable.fnDestroy();
+			$('#data-hampirpensiun').html(data);
+			refresh();
+		});
+	}
+
 </script>

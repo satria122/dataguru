@@ -285,6 +285,34 @@ class Pegawai extends AUTH_Controller {
 			}
 		}
 	}
+
+	public function pensiun(){
+		$data['page'] = "pegawai";
+		$data['judul'] = "Data Guru Pensiun";
+		$data['deskripsi'] = "Manage Data Guru Pensiun";
+		$data['userdata'] = $this->userdata;
+		$this->template->views('pegawai/pensiun',$data);
+	}
+
+	public function tampilpensiun(){
+		$today = date('Y-m-d');
+		$data['dataPegawai'] = $this->db->query("select * from pegawai where tgl_pensiun < '$today' order by id desc")->result();
+		$this->load->view('pegawai/list_pensiun', $data);
+	}
+
+	public function hampirpensiun(){
+		$data['page'] = "pegawai";
+		$data['judul'] = "Data Guru Menjelang Pensiun";
+		$data['deskripsi'] = "Manage Data Guru Menjelang Pensiun";
+		$data['userdata'] = $this->userdata;
+		$this->template->views('pegawai/hampirpensiun',$data);
+	}
+
+	public function tampilhampirpensiun(){
+		$today = date('Y-m-d');
+		$data['dataPegawai'] = $this->db->query("select * from pegawai where DATE_SUB(tgl_pensiun,INTERVAL 3 MONTH) > '$today' order by id desc")->result();
+		$this->load->view('pegawai/list_hampirpensiun', $data);
+	}
 }
 
 /* End of file Pegawai.php */
