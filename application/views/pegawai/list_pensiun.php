@@ -42,6 +42,13 @@
         }
         ?>
     </td>
+    <td class="text-center">
+    <?php if($pegawai->pengurusan_pensiun=='Belum'){ ?>
+          <span class="label label-danger pull-right">Belum Verivikasi</span>
+    <?php }else{ ?>
+          <span class="label label-success pull-right">Terverivikasi</span>
+    <?php } ?>
+    </td>
     <td><?php echo $pegawai->kelamin; ?></td>
     <td><?php echo $pegawai->agama; ?></td>
     <td><?php echo $pegawai->telp; ?></td>

@@ -303,7 +303,7 @@ class Pegawai extends AUTH_Controller {
 
 	public function tampilpensiun(){
 		$today = date('Y-m-d');
-		$data['dataPegawai'] = $this->db->query("select * from pegawai where tgl_pensiun < '$today' order by id desc")->result();
+		$data['dataPegawai'] = $this->db->query("select * from pegawai where tgl_pensiun < '$today' and kota='PNS' order by id desc")->result();
 		$this->load->view('pegawai/list_pensiun', $data);
 	}
 
@@ -317,7 +317,7 @@ class Pegawai extends AUTH_Controller {
 
 	public function tampilhampirpensiun(){
 		$today = date('Y-m-d');
-		$data['dataPegawai'] = $this->db->query("select * from pegawai where DATE_SUB(tgl_pensiun,INTERVAL 3 MONTH) > '$today' order by id desc")->result();
+		$data['dataPegawai'] = $this->db->query("select * from pegawai where DATE_SUB(tgl_pensiun,INTERVAL 3 MONTH) > '$today' and kota='PNS' order by id desc")->result();
 		$this->load->view('pegawai/list_hampirpensiun', $data);
 	}
 }

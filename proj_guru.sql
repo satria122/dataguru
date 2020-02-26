@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
--- http://www.phpmyadmin.net
+-- version 4.9.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2020 at 01:24 PM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Waktu pembuatan: 26 Feb 2020 pada 02.55
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.3.13
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `proj_guru`
@@ -23,20 +25,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
   `username` varchar(15) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
-  `foto` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `foto` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `admin`
+-- Dumping data untuk tabel `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `nama`, `foto`) VALUES
@@ -46,31 +47,29 @@ INSERT INTO `admin` (`id`, `username`, `password`, `nama`, `foto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `agama`
+-- Struktur dari tabel `agama`
 --
 
-CREATE TABLE IF NOT EXISTS `agama` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE `agama` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_absensi`
+-- Struktur dari tabel `data_absensi`
 --
 
-CREATE TABLE IF NOT EXISTS `data_absensi` (
-  `log_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+CREATE TABLE `data_absensi` (
+  `log_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `nip` varchar(50) NOT NULL,
   `data` text NOT NULL COMMENT 'sn+pc time',
-  `keterangan` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`log_time`)
+  `keterangan` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `data_absensi`
+-- Dumping data untuk tabel `data_absensi`
 --
 
 INSERT INTO `data_absensi` (`log_time`, `nip`, `data`, `keterangan`) VALUES
@@ -84,18 +83,17 @@ INSERT INTO `data_absensi` (`log_time`, `nip`, `data`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_sidik`
+-- Struktur dari tabel `data_sidik`
 --
 
-CREATE TABLE IF NOT EXISTS `data_sidik` (
-  `nip` int(11) unsigned NOT NULL,
-  `id_sidik` int(11) unsigned NOT NULL,
-  `dt_sidik` text NOT NULL,
-  PRIMARY KEY (`nip`)
+CREATE TABLE `data_sidik` (
+  `nip` int(11) UNSIGNED NOT NULL,
+  `id_sidik` int(11) UNSIGNED NOT NULL,
+  `dt_sidik` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `data_sidik`
+-- Dumping data untuk tabel `data_sidik`
 --
 
 INSERT INTO `data_sidik` (`nip`, `id_sidik`, `dt_sidik`) VALUES
@@ -107,20 +105,19 @@ INSERT INTO `data_sidik` (`nip`, `id_sidik`, `dt_sidik`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `device`
+-- Struktur dari tabel `device`
 --
 
-CREATE TABLE IF NOT EXISTS `device` (
+CREATE TABLE `device` (
   `device_name` varchar(50) NOT NULL,
   `sn` varchar(50) NOT NULL,
   `vc` varchar(50) NOT NULL,
   `ac` varchar(50) NOT NULL,
-  `vkey` varchar(50) NOT NULL,
-  PRIMARY KEY (`sn`)
+  `vkey` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `device`
+-- Dumping data untuk tabel `device`
 --
 
 INSERT INTO `device` (`device_name`, `sn`, `vc`, `ac`, `vkey`) VALUES
@@ -134,17 +131,16 @@ INSERT INTO `device` (`device_name`, `sn`, `vc`, `ac`, `vkey`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `golongan`
+-- Struktur dari tabel `golongan`
 --
 
-CREATE TABLE IF NOT EXISTS `golongan` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
+CREATE TABLE `golongan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `golongan`
+-- Dumping data untuk tabel `golongan`
 --
 
 INSERT INTO `golongan` (`id`, `nama`) VALUES
@@ -153,17 +149,16 @@ INSERT INTO `golongan` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jabatan`
+-- Struktur dari tabel `jabatan`
 --
 
-CREATE TABLE IF NOT EXISTS `jabatan` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+CREATE TABLE `jabatan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `jabatan`
+-- Dumping data untuk tabel `jabatan`
 --
 
 INSERT INTO `jabatan` (`id`, `nama`) VALUES
@@ -191,17 +186,16 @@ INSERT INTO `jabatan` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelamin`
+-- Struktur dari tabel `kelamin`
 --
 
-CREATE TABLE IF NOT EXISTS `kelamin` (
+CREATE TABLE `kelamin` (
   `id` int(11) NOT NULL,
-  `nama` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `nama` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kelamin`
+-- Dumping data untuk tabel `kelamin`
 --
 
 INSERT INTO `kelamin` (`id`, `nama`) VALUES
@@ -211,17 +205,16 @@ INSERT INTO `kelamin` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kota`
+-- Struktur dari tabel `kota`
 --
 
-CREATE TABLE IF NOT EXISTS `kota` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+CREATE TABLE `kota` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kota`
+-- Dumping data untuk tabel `kota`
 --
 
 INSERT INTO `kota` (`id`, `nama`) VALUES
@@ -232,11 +225,11 @@ INSERT INTO `kota` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nonpeg`
+-- Struktur dari tabel `nonpeg`
 --
 
-CREATE TABLE IF NOT EXISTS `nonpeg` (
-  `id` int(25) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `nonpeg` (
+  `id` int(25) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `ttl` varchar(50) NOT NULL,
   `golongan` varchar(50) NOT NULL,
@@ -245,12 +238,11 @@ CREATE TABLE IF NOT EXISTS `nonpeg` (
   `agama` varchar(50) NOT NULL,
   `telp` varchar(13) NOT NULL,
   `alamat` varchar(100) NOT NULL,
-  `sekolah` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `sekolah` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nonpeg`
+-- Dumping data untuk tabel `nonpeg`
 --
 
 INSERT INTO `nonpeg` (`id`, `nama`, `ttl`, `golongan`, `kota`, `kelamin`, `agama`, `telp`, `alamat`, `sekolah`) VALUES
@@ -259,11 +251,11 @@ INSERT INTO `nonpeg` (`id`, `nama`, `ttl`, `golongan`, `kota`, `kelamin`, `agama
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pegawai`
+-- Struktur dari tabel `pegawai`
 --
 
-CREATE TABLE IF NOT EXISTS `pegawai` (
-  `id` int(25) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `pegawai` (
+  `id` int(25) NOT NULL,
   `nip` varchar(50) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `ttl` varchar(50) NOT NULL,
@@ -275,22 +267,140 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
   `telp` varchar(13) NOT NULL,
   `alamat` varchar(100) NOT NULL,
   `sekolah` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `nip` (`nip`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7073 ;
+  `tgl_pensiun` date DEFAULT NULL,
+  `pengurusan_pensiun` enum('Sudah','Belum') NOT NULL DEFAULT 'Belum'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pegawai`
+-- Dumping data untuk tabel `pegawai`
 --
 
-INSERT INTO `pegawai` (`id`, `nip`, `nama`, `ttl`, `golongan`, `jabatan`, `kota`, `kelamin`, `agama`, `telp`, `alamat`, `sekolah`) VALUES
-(7020, '876857685768', 'Supardi', '', 'Guru', 'I C', 'PNS', 'Laki-laki', 'Islam', '085743289742', 'Jln. Sumpah pemuda no 55 04/01 Surabaya', 'SDN Kusuma Bangsa'),
-(7021, '86745432315432', 'Abdul Rahman', 'Bekasi 2020-02-06', 'Kepala Sekolah', 'IV D', 'PNS', 'Laki-laki', 'Islam', '087658493021', 'Jln. Melati no 1', 'SDN Pertiwi'),
-(7022, '987564732121', 'Budi Susanto', 'Bekasi 2020-02-05', 'Guru', 'II B', 'PNS', 'Laki-laki', 'Islam', '087658439213', 'Jln. Flamboyan no 2 01/01', 'SDN Waru 02'),
-(7024, '198609262015051001', 'Sujono', 'Kediri 1996-02-04', 'Guru', 'I C', 'PNS', 'Laki-laki', 'Islam', '087658493021', 'Jln. Balowerti gg 2 no 80', 'SDN Balowerti 1'),
-(7070, '8768576857681', 'Supardi', '', 'Guru', 'I C', 'PNS', 'Laki-laki', 'Islam', '085743289742', 'Jln. Sumpah pemuda no 55 04/01 Surabaya', 'SDN Kusuma Bangsa'),
-(7071, '8674543231543214', 'Abdul Rahman', '', 'Kepala Sekolah', 'IV D', 'PNS', 'Laki-laki', 'Islam', '087658493021', 'Jln. Melati no 1', 'SDN Pertiwi'),
-(7072, '9875647321211', 'Budi Susanto', 'kediri 30-12-2019', 'Guru', 'II B', 'PNS', 'Laki-laki', 'Islam', '087658439213', 'Jln. Flamboyan no 2 01/01', 'SDN Waru 02');
+INSERT INTO `pegawai` (`id`, `nip`, `nama`, `ttl`, `golongan`, `jabatan`, `kota`, `kelamin`, `agama`, `telp`, `alamat`, `sekolah`, `tgl_pensiun`, `pengurusan_pensiun`) VALUES
+(7020, '876857685768', 'Supardi', '', 'Guru', 'I C', 'PNS', 'Laki-laki', 'Islam', '085743289742', 'Jln. Sumpah pemuda no 55 04/01 Surabaya', 'SDN Kusuma Bangsa', '2020-02-02', 'Belum'),
+(7021, '86745432315432', 'Abdul Rahman', 'Bekasi 2020-02-06', 'Kepala Sekolah', 'IV D', 'PNS', 'Laki-laki', 'Islam', '087658493021', 'Jln. Melati no 1', 'SDN Pertiwi', '2020-02-29', 'Belum'),
+(7022, '987564732121', 'Budi Susanto', 'Bekasi 2020-02-05', 'Guru', 'II B', 'PNS', 'Laki-laki', 'Islam', '087658439213', 'Jln. Flamboyan no 2 01/01', 'SDN Waru 02', '2020-09-11', 'Belum'),
+(7024, '198609262015051001', 'Sujono', 'Kediri 1996-02-04', 'Guru', 'I C', 'PNS', 'Laki-laki', 'Islam', '087658493021', 'Jln. Balowerti gg 2 no 80', 'SDN Balowerti 1', '2020-04-15', 'Belum'),
+(7070, '8768576857681', 'Supardi', '', 'Guru', 'I C', 'PNS', 'Laki-laki', 'Islam', '085743289742', 'Jln. Sumpah pemuda no 55 04/01 Surabaya', 'SDN Kusuma Bangsa', NULL, 'Belum'),
+(7071, '8674543231543214', 'Abdul Rahman', '', 'Kepala Sekolah', 'IV D', 'PNS', 'Laki-laki', 'Islam', '087658493021', 'Jln. Melati no 1', 'SDN Pertiwi', NULL, 'Belum'),
+(7072, '9875647321211', 'Budi Susanto', 'kediri 30-12-2019', 'Guru', 'II B', 'PNS', 'Laki-laki', 'Islam', '087658439213', 'Jln. Flamboyan no 2 01/01', 'SDN Waru 02', NULL, 'Belum');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `agama`
+--
+ALTER TABLE `agama`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `data_absensi`
+--
+ALTER TABLE `data_absensi`
+  ADD PRIMARY KEY (`log_time`);
+
+--
+-- Indeks untuk tabel `data_sidik`
+--
+ALTER TABLE `data_sidik`
+  ADD PRIMARY KEY (`nip`);
+
+--
+-- Indeks untuk tabel `device`
+--
+ALTER TABLE `device`
+  ADD PRIMARY KEY (`sn`);
+
+--
+-- Indeks untuk tabel `golongan`
+--
+ALTER TABLE `golongan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `jabatan`
+--
+ALTER TABLE `jabatan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `kelamin`
+--
+ALTER TABLE `kelamin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `kota`
+--
+ALTER TABLE `kota`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `nonpeg`
+--
+ALTER TABLE `nonpeg`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `pegawai`
+--
+ALTER TABLE `pegawai`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nip` (`nip`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `agama`
+--
+ALTER TABLE `agama`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `golongan`
+--
+ALTER TABLE `golongan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT untuk tabel `jabatan`
+--
+ALTER TABLE `jabatan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT untuk tabel `kota`
+--
+ALTER TABLE `kota`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT untuk tabel `nonpeg`
+--
+ALTER TABLE `nonpeg`
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `pegawai`
+--
+ALTER TABLE `pegawai`
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7073;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

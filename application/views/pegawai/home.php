@@ -38,12 +38,12 @@
           <th>Status</th>
           <th>Status Pensiun</th>
           <th>Tgl Pensiun</th>
+          <th>Verivikasi Pensiun</th>
           <th>Jenis Kelamin</th>
           <th>Agama</th>
           <th>No Telp</th>
           <th>Alamat</th>
           <th>Asal Sekolah</th>
-          <th>Tgl Pensiun</th>
           <th style="text-align: center;">Aksi</th>
         </tr>
       </thead>

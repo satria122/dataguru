@@ -10,11 +10,15 @@ class Home extends AUTH_Controller {
 	}
 
 	public function index() {
-		$data['jml_pegawai'] 	= $this->M_pegawai->total_rows();
-		$data['jml_jabatan'] 	= $this->M_jabatan->total_rows();
-		$data['jml_kota'] 		= $this->M_kota->total_rows();
-		$data['userdata'] 		= $this->userdata;
-
+		$today = date('Y-m-d');
+		$data['jml_pegawai'] 			= $this->M_pegawai->total_rows();
+		$data['jml_jabatan'] 			= $this->M_jabatan->total_rows();
+		$data['jml_kota'] 				= $this->M_kota->total_rows();
+		$data['userdata'] 				= $this->userdata;
+		$data['jumlah_hampirpensiun']	= $this->db->query("select count(*) as total from pegawai where DATE_SUB(tgl_pensiun,INTERVAL 3 MONTH) > '$today' and kota='PNS'")->result_array();
+		$data['list_hampirpensiun']		= $this->db->query("select * from pegawai where DATE_SUB(tgl_pensiun,INTERVAL 3 MONTH) > '$today' and kota='PNS' order by id desc limit 0,8")->result_array();
+		$data['jumlah_pensiun']			= $this->db->query("select count(*) as total from pegawai where tgl_pensiun < '$today' and kota='PNS'")->result_array();
+		$data['list_pensiun']			= $this->db->query("select * from pegawai where tgl_pensiun < '$today' and kota='PNS' order by id desc limit 0,8")->result_array();
 		$rand = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
 		
 		$jabatan = $this->M_jabatan->select_all();
