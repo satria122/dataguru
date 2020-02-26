@@ -1,12 +1,7 @@
 <?php $nomor = 1; ?>
 <?php
   foreach ($dataPegawai as $pegawai) {
-    $date_now = date('Y-m-d');
-    $tgl_pensiun = $pegawai->tgl_pensiun;
-    $tgl_menjenlang_pensiun = date('Y-m-d',strtotime($tgl_pensiun."-3 months"));
-    
-
-    ?>
+    $date_now = date('Y-m-d'); ?>
 
 <tr>
     <td><?= $nomor;?> </td>
@@ -20,8 +15,8 @@
     <td class="text-center">
         <?php
         if($pegawai->tgl_pensiun!=''){
-          if(strtotime($date_now)<strtotime($tgl_pensiun)){
-            if(strtotime($date_now)<strtotime($tgl_menjenlang_pensiun)){
+          if(strtotime($date_now)<strtotime($pegawai->tgl_pensiun)){
+            if(strtotime($date_now)>strtotime($pegawai->tgl_menjelang_pensiun)){
               echo '<span class="label label-warning">Aktiv</span>';
             }else{
               echo '<span class="label label-success">Aktiv</span>';

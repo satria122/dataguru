@@ -38,6 +38,42 @@
       <a href="<?php echo base_url('Kota') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
+  
+  <div class="col-lg-6 col-xs-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <i class="fa fa-briefcase"></i>
+        <h3 class="box-title">Statistik <small>Data Golongan</small></h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <canvas id="data-jabatan" style="height:250px"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-xs-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <i class="fa fa-briefcase"></i>
+        <h3 class="box-title">Statistik <small>Data Status</small></h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <canvas id="data-kota" style="height:250px"></canvas>
+      </div>
+    </div>
+  </div>
   <div class="col-lg-6 col-xs-12">
   <div class="box box-primary">
             <div class="box-header with-border">
@@ -107,41 +143,6 @@
               <a href="<?php echo base_url('Pegawai/pensiun')?>" class="uppercase">Lihat Semua Data</a>
             </div>
           </div>
-  </div>
-  <div class="col-lg-6 col-xs-12">
-    <div class="box box-info">
-      <div class="box-header with-border">
-        <i class="fa fa-briefcase"></i>
-        <h3 class="box-title">Statistik <small>Data Golongan</small></h3>
-
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-        </div>
-      </div>
-      <div class="box-body">
-        <canvas id="data-jabatan" style="height:250px"></canvas>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-6 col-xs-12">
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <i class="fa fa-briefcase"></i>
-        <h3 class="box-title">Statistik <small>Data Status</small></h3>
-
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-        </div>
-      </div>
-      <div class="box-body">
-        <canvas id="data-kota" style="height:250px"></canvas>
-      </div>
-    </div>
   </div>
 </div>
 

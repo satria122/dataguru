@@ -544,5 +544,43 @@ function tampilInputSidik() {
 			refresh();
 		});
 	}
-
+	$(document).on("click", ".tombol-verivikasi", function() {
+		$('#tampil_nama').html($(this).attr("data-nama"));
+		$('#tampil_nip').html($(this).attr("data-nip"));
+		$('#tampil_status').html($(this).attr("data-golongan"));
+		$('#tampil_golongan').html($(this).attr("data-jabatan"));
+		$('#tampil_tglpensiun').html($(this).attr("data-tglpensiun"));
+		$('#kode_pegawai').val($(this).attr("data-id"));
+		$("#modal-verivikasi").modal('toggle');
+	});
+	$(document).on("click", "#tombol-verivikasipensiun", function() {
+		var id = $('#kode_pegawai').val();
+		
+		$.ajax({
+			method: "POST",
+			url: "<?php echo base_url('Pegawai/verivikasi'); ?>",
+			data: "id=" +id
+		})
+		.done(function(data) {
+			$("#modal-verivikasi").modal('hide');
+			tampilhampirpensiun();
+			$('.msg').html(data);
+			effect_msg();
+		})
+	});
+	$(document).on("click", "#tombol-verivikasipensiundua", function() {
+		var id = $('#kode_pegawai').val();
+		
+		$.ajax({
+			method: "POST",
+			url: "<?php echo base_url('Pegawai/verivikasi'); ?>",
+			data: "id=" +id
+		})
+		.done(function(data) {
+			$("#modal-verivikasi").modal('hide');
+			tampilpensiun();
+			$('.msg').html(data);
+			effect_msg();
+		})
+	});
 </script>

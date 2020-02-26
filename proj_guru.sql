@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Feb 2020 pada 02.55
+-- Waktu pembuatan: 26 Feb 2020 pada 06.40
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.3.13
 
@@ -268,6 +268,7 @@ CREATE TABLE `pegawai` (
   `alamat` varchar(100) NOT NULL,
   `sekolah` varchar(50) NOT NULL,
   `tgl_pensiun` date DEFAULT NULL,
+  `tgl_menjelang_pensiun` date DEFAULT NULL,
   `pengurusan_pensiun` enum('Sudah','Belum') NOT NULL DEFAULT 'Belum'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -275,14 +276,14 @@ CREATE TABLE `pegawai` (
 -- Dumping data untuk tabel `pegawai`
 --
 
-INSERT INTO `pegawai` (`id`, `nip`, `nama`, `ttl`, `golongan`, `jabatan`, `kota`, `kelamin`, `agama`, `telp`, `alamat`, `sekolah`, `tgl_pensiun`, `pengurusan_pensiun`) VALUES
-(7020, '876857685768', 'Supardi', '', 'Guru', 'I C', 'PNS', 'Laki-laki', 'Islam', '085743289742', 'Jln. Sumpah pemuda no 55 04/01 Surabaya', 'SDN Kusuma Bangsa', '2020-02-02', 'Belum'),
-(7021, '86745432315432', 'Abdul Rahman', 'Bekasi 2020-02-06', 'Kepala Sekolah', 'IV D', 'PNS', 'Laki-laki', 'Islam', '087658493021', 'Jln. Melati no 1', 'SDN Pertiwi', '2020-02-29', 'Belum'),
-(7022, '987564732121', 'Budi Susanto', 'Bekasi 2020-02-05', 'Guru', 'II B', 'PNS', 'Laki-laki', 'Islam', '087658439213', 'Jln. Flamboyan no 2 01/01', 'SDN Waru 02', '2020-09-11', 'Belum'),
-(7024, '198609262015051001', 'Sujono', 'Kediri 1996-02-04', 'Guru', 'I C', 'PNS', 'Laki-laki', 'Islam', '087658493021', 'Jln. Balowerti gg 2 no 80', 'SDN Balowerti 1', '2020-04-15', 'Belum'),
-(7070, '8768576857681', 'Supardi', '', 'Guru', 'I C', 'PNS', 'Laki-laki', 'Islam', '085743289742', 'Jln. Sumpah pemuda no 55 04/01 Surabaya', 'SDN Kusuma Bangsa', NULL, 'Belum'),
-(7071, '8674543231543214', 'Abdul Rahman', '', 'Kepala Sekolah', 'IV D', 'PNS', 'Laki-laki', 'Islam', '087658493021', 'Jln. Melati no 1', 'SDN Pertiwi', NULL, 'Belum'),
-(7072, '9875647321211', 'Budi Susanto', 'kediri 30-12-2019', 'Guru', 'II B', 'PNS', 'Laki-laki', 'Islam', '087658439213', 'Jln. Flamboyan no 2 01/01', 'SDN Waru 02', NULL, 'Belum');
+INSERT INTO `pegawai` (`id`, `nip`, `nama`, `ttl`, `golongan`, `jabatan`, `kota`, `kelamin`, `agama`, `telp`, `alamat`, `sekolah`, `tgl_pensiun`, `tgl_menjelang_pensiun`, `pengurusan_pensiun`) VALUES
+(7020, '876857685768', 'Supardi', ' ', 'Guru', 'I C', 'PNS', 'Laki-laki', 'Islam', '085743289742', 'Jln. Sumpah pemuda no 55 04/01 Surabaya', 'SDN Kusuma Bangsa', '2020-01-01', '2019-10-01', 'Sudah'),
+(7021, '86745432315432', 'Abdul Rahman', ' ', 'Kepala Sekolah', 'IV D', 'PNS', 'Laki-laki', 'Islam', '087658493021', 'Jln. Melati no 1', 'SDN Pertiwi', '2020-01-01', '2019-10-01', 'Sudah'),
+(7022, '987564732121', 'Budi Susanto', ' ', 'Guru', 'II B', 'PNS', 'Laki-laki', 'Islam', '087658439213', 'Jln. Flamboyan no 2 01/01', 'SDN Waru 02', '2020-03-01', '2019-12-01', 'Sudah'),
+(7024, '198609262015051001', 'Sujono', ' ', 'Guru', 'I C', 'PNS', 'Laki-laki', 'Islam', '087658493021', 'Jln. Balowerti gg 2 no 80', 'SDN Balowerti 1', '2020-03-01', '2019-12-01', 'Sudah'),
+(7070, '8768576857681', 'Supardi', ' ', 'Guru', 'I C', 'PNS', 'Laki-laki', 'Islam', '085743289742', 'Jln. Sumpah pemuda no 55 04/01 Surabaya', 'SDN Kusuma Bangsa', '2020-03-01', '2019-12-01', 'Sudah'),
+(7071, '8674543231543214', 'Abdul Rahman', ' ', 'Kepala Sekolah', 'IV D', 'PNS', 'Laki-laki', 'Islam', '087658493021', 'Jln. Melati no 1', 'SDN Pertiwi', '2020-12-01', '2020-09-01', 'Belum'),
+(7072, '9875647321211', 'Budi Susanto', ' ', 'Guru', 'II B', 'PNS', 'Laki-laki', 'Islam', '087658439213', 'Jln. Flamboyan no 2 01/01', 'SDN Waru 02', '2020-12-01', '2020-09-01', 'Belum');
 
 --
 -- Indexes for dumped tables

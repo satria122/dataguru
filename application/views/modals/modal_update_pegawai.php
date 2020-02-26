@@ -133,7 +133,12 @@
       </span>
       <input type="text" class="form-control" placeholder="Sekolah" name="sekolah" aria-describedby="sizing-addon2" value="<?php echo $dataPegawai->sekolah; ?>">
     </div>
-
+    <div class="input-group form-group">
+            <span class="input-group-addon" id="sizing-addon2">
+                <i class="glyphicon glyphicon-calendar"></i>
+            </span>
+            <input type="date" class="form-control" name="tgl_pensiun" aria-describedby="sizing-addon2" value="<?php echo $dataPegawai->tgl_pensiun; ?>">
+        </div>
     <div class="form-group">
       <div class="col-md-12">
         <button type="submit" class="form-control btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Update Data</button>

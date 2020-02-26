@@ -49,7 +49,6 @@ class Pegawai extends AUTH_Controller {
 		$this->form_validation->set_rules('agama', 'Agama', 'trim|required');
 		$this->form_validation->set_rules('golongan', 'Golongan', 'trim|required');
 		// $this->form_validation->set_rules('ttl', 'TTL', 'trim|required');
-		$this->form_validation->set_rules('tgl_pensiun', 'Tgl Pensiun', 'trim|required');
 		$nip = $this->input->post('nip');
 		$nama = $this->input->post('nama');
 		$kota=$this->input->post('kota');
@@ -63,6 +62,13 @@ class Pegawai extends AUTH_Controller {
 		$ttl1 = $this->input->post('ttl1',true);
 		$ttl2 = $this->input->post('ttl2',true);
 		$tgl_pensiun= $this->input->post('tgl_pensiun');
+		if($tgl_pensiun!=''){
+			$tgl_menjenlang_pensiun = date('Y-m-d',strtotime($tgl_pensiun."-3 months"));
+		
+		}else{
+			$tgl_pensiun = NULL;
+			$tgl_menjenlang_pensiun =NULL;
+		}
 		$data = array(
 		'nip'=>$nip,
 		'nama'=>$nama,
@@ -75,7 +81,8 @@ class Pegawai extends AUTH_Controller {
 		'agama'=>$agama,
 		'golongan'=>$golongan,
 		'ttl'=>$ttl1.' '.$ttl2,
-		'tgl_pensiun'=>$tgl_pensiun
+		'tgl_pensiun'=>$tgl_pensiun,
+		'tgl_menjelang_pensiun'=>$tgl_menjenlang_pensiun,
 		);
 		if ($this->form_validation->run() == TRUE) {
 			$result = $this->M_pegawai->insert($data, 'pegawai');
@@ -116,7 +123,6 @@ class Pegawai extends AUTH_Controller {
 		$this->form_validation->set_rules('agama', 'Agama', 'trim|required');
 		$this->form_validation->set_rules('golongan', 'Golongan', 'trim|required');
 		// $this->form_validation->set_rules('ttl', 'TTL', 'trim|required');
-		$this->form_validation->set_rules('tgl_pensiun', 'Tgl Pensiun', 'trim|required');
 		$id = $this->input->post('id');
 		$nip = $this->input->post('nip');
 		$nama = $this->input->post('nama');
@@ -131,6 +137,13 @@ class Pegawai extends AUTH_Controller {
 		$ttl1 = $this->input->post('ttl1',true);
 		$ttl2 = $this->input->post('ttl2',true);
 		$tgl_pensiun= $this->input->post('tgl_pensiun');
+		if($tgl_pensiun!=''){
+			$tgl_menjenlang_pensiun = date('Y-m-d',strtotime($tgl_pensiun."-3 months"));
+		
+		}else{
+			$tgl_pensiun = NULL;
+			$tgl_menjenlang_pensiun =NULL;
+		}
 		$data = array(
 		'nip'=>$nip,
 		'nama'=>$nama,
@@ -143,7 +156,8 @@ class Pegawai extends AUTH_Controller {
 		'agama'=>$agama,
 		'golongan'=>$golongan,
 		'ttl'=>$ttl1.' '.$ttl2,
-		'tgl_pensiun'=>$tgl_pensiun
+		'tgl_pensiun'=>$tgl_pensiun,
+		'tgl_menjelang_pensiun'=>$tgl_menjenlang_pensiun,
 		);
 		$where = array('id' => $id);
 		$table = 'pegawai';
@@ -271,6 +285,13 @@ class Pegawai extends AUTH_Controller {
 							$resultData[$index]['telp'] = $value['I'];
 							$resultData[$index]['alamat'] = $value['J'];
 							$resultData[$index]['sekolah'] = $value['K'];
+							$resultData[$index]['tgl_pensiun'] = $value['L'];
+							if($value['L']!=''){
+								$resultData[$index]['tgl_menjelang_pensiun'] = date('Y-m-d',strtotime($value['L']."-3 months"));
+							}else{
+								$resultData[$index]['tgl_menjelang_pensiun'] ='';
+							}
+							
 						}
 					}
 					$index++;
@@ -317,8 +338,19 @@ class Pegawai extends AUTH_Controller {
 
 	public function tampilhampirpensiun(){
 		$today = date('Y-m-d');
-		$data['dataPegawai'] = $this->db->query("select * from pegawai where DATE_SUB(tgl_pensiun,INTERVAL 3 MONTH) > '$today' and kota='PNS' order by id desc")->result();
+		$data['dataPegawai'] = $this->db->query("select * from pegawai where tgl_pensiun > '$today' and tgl_menjelang_pensiun < '$today' and kota='PNS' order by id desc")->result();
 		$this->load->view('pegawai/list_hampirpensiun', $data);
+	}
+
+	public function verivikasi() {
+		$id = $_POST['id'];
+		$result = $this->db->query("update pegawai set pengurusan_pensiun='Sudah' where id='$id'");
+
+		if ($result > 0) {
+			echo show_succ_msg('Data Guru Berhasil diperbarui', '20px');
+		} else {
+			echo show_err_msg('Data Guru Gagal diperbarui', '20px');
+		}
 	}
 }
 
