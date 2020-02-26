@@ -113,14 +113,14 @@
 
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
-        <i class="glyphicon glyphicon-education"></i>
+        <i class="glyphicon glyphicon-phone-alt"></i>
       </span>
       <input type="text" class="form-control" placeholder="Nomor Telepon" name="telp" aria-describedby="sizing-addon2" value="<?php echo $dataPegawai->telp; ?>">
     </div>
 
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
-        <i class="glyphicon glyphicon-user"></i>
+        <i class="glyphicon glyphicon-home"></i>
       </span>
       <textarea name="alamat" class="form-control" rows="3"><?= $dataPegawai->alamat;?></textarea>
 
@@ -129,7 +129,7 @@
 
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
-        <i class="glyphicon glyphicon-user"></i>
+        <i class="glyphicon glyphicon-education"></i>
       </span>
       <input type="text" class="form-control" placeholder="Sekolah" name="sekolah" aria-describedby="sizing-addon2" value="<?php echo $dataPegawai->sekolah; ?>">
     </div>
