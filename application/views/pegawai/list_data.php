@@ -6,7 +6,16 @@
 <tr>
     <td><?= $nomor;?> </td>
     <?php $nomor++;?>
-    <td><?php echo $pegawai->nip; ?></td>
+    <td class="text-center">
+        <?php
+        if($pegawai->nip!=''){
+          echo $pegawai->nip;
+        }else{
+          echo '-';
+        }
+        ?>
+    </td>
+    <!-- <td><?php echo $pegawai->nip; ?></td> -->
     <td style="min-width:50px;"><?php echo $pegawai->nama; ?></td>
     <td><?php echo $pegawai->ttl; ?></td>
     <td><?php echo $pegawai->golongan; ?></td>
@@ -50,7 +59,7 @@
     <td><?php echo $pegawai->telp; ?></td>
     <td><?php echo $pegawai->alamat; ?></td>
     <td><?php echo $pegawai->sekolah; ?></td>
-    <td class="text-center" style="min-width:300px;">
+    <td class="text-center" style="min-width:200px;">
         <!-- style for lebar kolom -->
         <button class="btn btn-warning btn-sm update-dataPegawai" data-id="<?php echo $pegawai->id; ?>"><i
                 class="glyphicon glyphicon-repeat"></i> Update</button>

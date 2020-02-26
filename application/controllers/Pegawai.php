@@ -35,9 +35,9 @@ class Pegawai extends AUTH_Controller {
 	}
 
 	public function prosesTambah() {
-		$this->form_validation->set_rules('nip', 'NIP', 'trim|required|numeric|is_unique[pegawai.nip]', array(
-                'required'      => 'Anda belum mengisi %s.',
-                'is_unique'     => '%s tidak boleh kembar.'));
+		// $this->form_validation->set_rules('nip', 'NIP', 'trim|required|numeric|is_unique[pegawai.nip]', array(
+  //               'required'      => 'Anda belum mengisi %s.',
+  //               'is_unique'     => '%s tidak boleh kembar.'));
 				//validasi form dengan cek eksistensi di database
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
 		$this->form_validation->set_rules('telp', 'Telepon', 'trim|required|numeric');
@@ -50,6 +50,11 @@ class Pegawai extends AUTH_Controller {
 		$this->form_validation->set_rules('golongan', 'Golongan', 'trim|required');
 		// $this->form_validation->set_rules('ttl', 'TTL', 'trim|required');
 		$nip = $this->input->post('nip');
+		if($nip!=''){
+		
+		}else{
+			$nip = NULL;
+		}
 		$nama = $this->input->post('nama');
 		$kota=$this->input->post('kota');
 		$jk= $this->input->post('jk');
