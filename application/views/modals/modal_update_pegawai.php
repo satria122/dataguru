@@ -24,10 +24,10 @@
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-map-marker"></i>
       </span>
-        <input type="text" name="ttl1" id="example-email" class="form-control" placeholder="Tempat" >
-      <span class="input-group-addon">
+        <input type="text" name="ttl" id="example-email" class="form-control" placeholder="TTL" value="<?php echo $dataPegawai->ttl; ?>">
+      <!-- <span class="input-group-addon">
       </span>
-        <input type="date" name="ttl2" id="ddtt" class="form-control" placeholder="Tgl Lahir" >
+        <input type="date" name="ttl2" id="ddtt" class="form-control" placeholder="Tgl Lahir" > -->
     </div>
 
      <div class="input-group form-group">

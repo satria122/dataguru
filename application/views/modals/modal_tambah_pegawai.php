@@ -162,6 +162,13 @@
       <input type="text" class="form-control" placeholder="Asal Sekolah" name="sekolah" aria-describedby="sizing-addon2">
     </div>
 
+    <div class="input-group form-group">
+    <span class="input-group-addon" id="sizing-addon2">
+      <i class="glyphicon glyphicon-alendar"></i>
+    </span>
+    <input type="date" class="form-control" name="tgl_pensiun" aria-describedby="sizing-addon2">
+  </div>
+
 
     <div class="form-group">
       <div class="col-md-12">
